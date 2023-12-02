@@ -1,0 +1,15 @@
+# Modify the JOB_LIST_TEMPLATE to include checkboxes
+JOB_LIST_TEMPLATE = '''
+    <h2>Job Listings:</h2>
+    <form method="post" action="/apply">
+        {% for job in jobs %}
+            <label>
+                <input type="checkbox" name="job_to_skip" value="{{ loop.index }}">
+                {{ loop.index }}. {{ job.title }} - {{ job.location }} | <a href="{{ job.details_url }}">Details</a>
+            </label><br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Submit Selection">
+    </form>
+    <p>Select the jobs you want to skip and click 'Submit Selection' or just click 'Submit Selection' to apply to all jobs.</p>
+'''
